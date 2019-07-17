@@ -72,18 +72,19 @@ def writeSelectedUnits(writemd, selection):
 
     writemd("Tested with version: `{}`\n".format(selection.projectInfo.version))
 
-    writemd("| Conformance Group   | Conformance Unit    | Result |")
-    writemd("|---------------------|---------------------|--------|")
+    writemd("| Result | Conformance Group   | Conformance Unit    |")
+    writemd("|--------|---------------------|---------------------|")
 
     for selGroup in selection.conformanceGroups:
-        headerPrinted = False
+        writemd("| {result} | {group} |  |".format(
+            group=selGroup.group.name,
+            result=testResultIconMap[selGroup.result.testresult]
+        ))
         for selUnit in selGroup.selectedUnits:
-            writemd("| {group} | {unit} | {result} |".format(
-                group=selGroup.group.name if not headerPrinted else "",
+            writemd("|  | {result} | {unit} |".format(
                 unit=selUnit.unit.name,
                 result=testResultIconMap[selUnit.result.testresult]
             ))
-            headerPrinted = True
 
 def writeAllProfiles(writemd, profiles):
 
@@ -107,7 +108,7 @@ def writeAllProfiles(writemd, profiles):
         ))
 
         for unit in group.conformanceUnits:
-            writemd("| {result} |  | {unit} |".format(
+            writemd("| | {result} | {unit} |".format(
                 unit=unit.name,
                 result=testResultIconMap[unit.getResult()]
             ))
@@ -129,7 +130,7 @@ def writeAllProfiles(writemd, profiles):
 
         for incUnits in profile.conformanceUnits:
 
-            writemd("| {result} |  | Unit | {optional}{unit}{optional} |".format(
+            writemd("|  | {result} | Unit | {optional}{unit}{optional} |".format(
                 unit=incUnits.unit.name,
                 result=testResultIconMap[incUnits.unit.getResult()],
                 optional='*' if incUnits.optional else ''
@@ -137,7 +138,7 @@ def writeAllProfiles(writemd, profiles):
 
         for incProfile in profile.profiles:
 
-            writemd("| {result} |  | {type} | {unit} |".format(
+            writemd("|  | {result} | {type} | {unit} |".format(
                 unit=incProfile.name,
                 result=testResultIconMap[incProfile.getResult()],
                 type="Profile" if not incProfile.isFacet else "Facet"
