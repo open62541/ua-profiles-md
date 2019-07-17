@@ -34,3 +34,17 @@ Due to licensing issues, you need to copy some files from your CTT installation 
 python3 generate_results_md.py --results=./example.results.xml --selection=./example.selection.xml PROFILES.md
 ```
 6. Check the output of the script by opening `PROFILES.md` file. You can also paste it into https://jbt.github.io/markdown-editor/
+
+## Implemented features column
+
+The implemented features column gives an indication if the corresponding conformance unit is implemented but not yet enabled for CTT testing.
+
+The configuration for this column needs to be manually maintained and is stored in the file `server.status.json` and `client.status.json`.
+
+To create your own `status.json` file, you can use the script `update_status_config.py` which will create a json file where all the units are set to `0`.
+
+```bash
+python3 update_status_config.py --profiles=./CTT/ClientProjects/Standard/uaprofiles.xml --config=client.config.json
+```
+
+The possible values for implementation status can be found in [status.py](status.py)

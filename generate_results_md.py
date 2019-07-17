@@ -16,8 +16,7 @@ import argparse
 from profile import *
 from result import *
 from selection import *
-import codecs
-import os
+import json
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument('-r', '--results',
@@ -43,6 +42,18 @@ parser.add_argument('--profilesClient',
                     type=argparse.FileType('rb'),
                     default='./CTT/ClientProjects/Standard/uaprofiles.xml',
                     help='uaprofiles.xml file which contains all the possible profiles and conformance units of a Server')
+
+parser.add_argument('--configClient',
+                    metavar="<configClient>",
+                    type=argparse.FileType('rb'),
+                    default='client.status.json',
+                    help='status.json file which contains additional implementation status information for the Client units')
+
+parser.add_argument('--configServer',
+                    metavar="<configServer>",
+                    type=argparse.FileType('rb'),
+                    default='server.status.json',
+                    help='status.json file which contains additional implementation status information for the Server units')
 
 parser.add_argument('--header',
                     metavar="<templateHeader>",
@@ -92,12 +103,16 @@ elif (verbosity >= 4):
 else:
     logging.basicConfig(level=logging.CRITICAL)
 
+serverStatus = json.loads(args.configServer.read().decode("utf-8"))
+clientStatus = json.loads(args.configClient.read().decode("utf-8"))
 
 serverProfiles = Profiles()
 serverProfiles.parseFile(args.profilesServer)
+serverProfiles.setImplementationStatus(serverStatus)
 
 clientProfiles = Profiles()
 clientProfiles.parseFile(args.profilesClient)
+clientProfiles.setImplementationStatus(clientStatus)
 
 selection = CttSelection()
 selectedProfilesType = selection.parseFile(args.selection, serverProfiles=serverProfiles, clientProfiles=clientProfiles)

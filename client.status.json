@@ -1,0 +1,95 @@
+{
+    "Address Space Model": {
+        "Address Space Client Base": 0
+    },
+    "Attribute Services": {
+        "Attribute Client Read Base": 0,
+        "Attribute Client Read Complex": 0,
+        "Attribute Client Read with proper Encoding": 0,
+        "Attribute Client Write Base": 0,
+        "Attribute Client Write Complex": 0,
+        "Attribute Client Write Quality & TimeStamp": 0
+    },
+    "Auditing": {
+        "Auditing Client Audit ID": 0,
+        "Auditing Client Subscribes": 0
+    },
+    "Base Information": {
+        "Base Info Client Basic": 0,
+        "Base Info Client Change Events": 0,
+        "Base Info Client RefreshData Mathod": 0,
+        "Base Info Client Type Programming": 0
+    },
+    "Data Access": {
+        "Data Access Client Basic": 0,
+        "Data Access Client Deadband": 0,
+        "Data Access Client SemanticChange": 0
+    },
+    "Discovery Services": {
+        "Discovery Client Configure Endpoint": 0,
+        "Discovery Client Find Servers Basic": 0,
+        "Discovery Client Find Servers Dynamic": 0,
+        "Discovery Client Find Servers with URI": 0,
+        "Discovery Client Get Endpoints Basic": 0,
+        "Discovery Client Get Endpoints Dynamic": 0
+    },
+    "Method Services": {
+        "Method Client Call": 0
+    },
+    "Monitored Item Services": {
+        "Monitor Client Complex Evt Filter": 0,
+        "Monitor Client Event Filter": 0,
+        "Monitor Client Events": 0,
+        "Monitor Client Modify": 0,
+        "Monitor Client Trigger": 0,
+        "Monitor Client Value Change": 0,
+        "Monitor Client by Index": 0
+    },
+    "Node Management Services": {
+        "Node Management Client": 0
+    },
+    "Protocol and Encoding": {
+        "Protocol Soap Binary WS Security": 0,
+        "Protocol Soap Xml WS Security": 0,
+        "Protocol TCP Binary UA Security": 0
+    },
+    "Redundancy": {
+        "Redundancy Client": 0,
+        "Redundancy Client Switch": 0
+    },
+    "Security": {
+        "Security Administration": 0,
+        "Security Administration - XML Schema": 0,
+        "Security Basic 128Rsa15": 0,
+        "Security Basic 256": 0,
+        "Security Certificate Administration": 0,
+        "Security Certificate Validation": 0,
+        "Security None": 0,
+        "Security None CreateSession ActivateSession": 0,
+        "Security User Name Password": 0,
+        "Security User X509": 0
+    },
+    "Session Services": {
+        "Session Client Auto Reconnect": 0,
+        "Session Client Base": 0,
+        "Session Client Cancel": 0,
+        "Session Client Detect Shutdown": 0,
+        "Session Client General Service Behaviour": 0,
+        "Session Client Impersonate": 0,
+        "Session Client KeepAlive": 0,
+        "Session Client Renew NodeIds": 0
+    },
+    "Subscription Services": {
+        "Subscription Client Basic": 0,
+        "Subscription Client Modify": 0,
+        "Subscription Client Multiple": 0,
+        "Subscription Client Publish Configurable": 0,
+        "Subscription Client Republish": 0
+    },
+    "View Services": {
+        "View Client Basic Browse": 0,
+        "View Client Basic ResultSet Filtering": 0,
+        "View Client RegisterNodes": 0,
+        "View Client TranslateBrowsePath": 0
+    }
+}
