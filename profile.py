@@ -17,6 +17,7 @@ import xml.dom.minidom as dom
 import json
 logger = logging.getLogger(__name__)
 from result import TestResult
+from status import ImplementationStatus
 
 class Profiles:
     """Class containing all profiles of a project"""
@@ -103,6 +104,13 @@ class Profiles:
             logger.warning("Profile '{}' not found.".format(profileName))
         return None
 
+    def setImplementationStatus(self, status):
+        for groupName in status:
+            group = self.getConformanceGroup(groupName)
+            for unitName in status[groupName]:
+                unit = group.getConformanceUnit(unitName)
+                unit.implementationStatus = ImplementationStatus(status[groupName][unitName])
+
 class ProjectInfo:
     """Class containing the project info of a profiles file"""
 
@@ -140,6 +148,7 @@ class ConformanceGroup:
         self.name = None
         self.result = []
         self.accumulatedTestResult = None
+        self.accumulatedImplementationStatus = None
 
     def parseXml(self, xmlelement, profiles):
         self.description = xmlelement.getAttribute("description")
@@ -176,6 +185,17 @@ class ConformanceGroup:
 
         return self.accumulatedTestResult
 
+    def getImplementationStatus(self):
+        if self.accumulatedImplementationStatus:
+            return self.accumulatedImplementationStatus
+
+        self.accumulatedImplementationStatus = ImplementationStatus.UNKNOWN
+        for unit in self.conformanceUnits:
+            if ImplementationStatus.UNKNOWN < unit.implementationStatus < self.accumulatedImplementationStatus:
+                self.accumulatedImplementationStatus = unit.implementationStatus
+
+        return self.accumulatedImplementationStatus
+
 class ConformanceUnit:
     """A conformance unit contains test cases"""
 
@@ -189,6 +209,7 @@ class ConformanceUnit:
         self.cleanupTestCase = None
         self.result = []
         self.accumulatedTestResult = None
+        self.implementationStatus = ImplementationStatus.UNKNOWN
 
     def parseXml(self, xmlelement, profiles):
         self.description = xmlelement.getAttribute("description")
@@ -318,6 +339,7 @@ class Profile:
         self.profiles = []
         self._delay_profile_add = []
         self.accumulatedTestResult = None
+        self.accumulatedImplementationStatus = None
 
     def parseXml(self, xmlelement, profiles):
         self.category = profiles.getCategory(xmlelement.getAttribute("category"))
@@ -368,3 +390,19 @@ class Profile:
                 self.accumulatedTestResult = res
 
         return self.accumulatedTestResult
+
+    def getImplementationStatus(self):
+        if self.accumulatedImplementationStatus:
+            return self.accumulatedImplementationStatus
+
+        self.accumulatedImplementationStatus = ImplementationStatus.UNKNOWN
+
+        for selUnit in self.conformanceUnits:
+            if ImplementationStatus.UNKNOWN < selUnit.unit.implementationStatus < self.accumulatedImplementationStatus:
+                self.accumulatedImplementationStatus = selUnit.unit.implementationStatus
+
+        for profile in self.profiles:
+            if ImplementationStatus.UNKNOWN < profile.getImplementationStatus() < self.accumulatedImplementationStatus:
+                self.accumulatedImplementationStatus = profile.getImplementationStatus()
+
+        return self.accumulatedImplementationStatus
