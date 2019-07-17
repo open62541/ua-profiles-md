@@ -1,0 +1,20 @@
+<UaTestCaseSelection xsi:noNamespaceSchemaLocation="testcaseselection.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ProjectInfo ProjectType="ServerProject" Version="0.1.234.567"/>
+ <ConformanceGroups>
+  <ConformanceGroup name="Group 1">
+   <ConformanceUnit name="Unit 1">
+    <TestCases>
+     <TestCase name="test1.js"/>
+    </TestCases>
+   </ConformanceUnit>
+  </ConformanceGroup>
+  <ConformanceGroup name="Group 2">
+   <ConformanceUnit name="Unit 3">
+    <TestCases>
+     <TestCase name="test1.js"/>
+     <TestCase name="test2.js"/>
+    </TestCases>
+   </ConformanceUnit>
+  </ConformanceGroup>
+ </ConformanceGroups>
+</UaTestCaseSelection>

@@ -1,0 +1,31 @@
+<UaCttResults xsi:noNamespaceSchemaLocation="uacttresults.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ResultNode status="" description="" testresult="1" timestamp="2019-03-01 16:22:27.386" name="Debug Run1">
+  <ResultNode status="" description="" testresult="1" timestamp="2019-03-01 16:22:27.388" name="beforeTest.js">
+   <ResultNode status="" description="Some initialization stuff" testresult="1" timestamp="2019-03-01 16:22:27.689" name="Warning">
+    <ResultNode status="" functionname="" testresult="6" timestamp="2019-03-01 16:22:27.689" name="Backtrace" linenumber="75" filename="Base/warnOnce.js"/>
+   </ResultNode>
+   <ResultNode status="Bad (0x80000000)" description="Other dummy" testresult="1" timestamp="2019-03-01 16:22:27.692" name="Warning">
+    <ResultNode status="" functionname="" testresult="6" timestamp="2019-03-01 16:22:27.692" name="Backtrace" linenumber="78" filename="Base/warnOnce.js"/>
+    <ResultNode status="" functionname="" testresult="6" timestamp="2019-03-01 16:22:27.692" name="Backtrace" linenumber="151" filename="GetEndpoints.js"/>
+   </ResultNode>
+  </ResultNode>
+  <ResultNode status="" description="Results for Group 1 selection" testresult="5" timestamp="2019-03-01 16:22:27.871" name="Group 1">
+   <ResultNode status="" description="Results for Unit 1 selection" testresult="5" timestamp="2019-03-01 16:22:27.871" name="Unit 1">
+    <ResultNode status="" description="" testresult="5" timestamp="2019-03-01 16:22:27.871" name="initialize.js"/>
+    <ResultNode status="" description="Some dummy result" testresult="5" timestamp="2019-03-01 16:22:27.929" name="test1.js"/>
+    <ResultNode status="" description="" testresult="5" timestamp="2019-03-01 16:22:47.006" name="cleanup.js"/>
+   </ResultNode>
+  </ResultNode>
+  <ResultNode status="" description="Results for Group 2 selection" testresult="5" timestamp="2019-03-01 16:22:27.871" name="Group 2">
+   <ResultNode status="" description="Results for Unit 3 selection" testresult="5" timestamp="2019-03-01 16:22:27.871" name="Unit 3">
+    <ResultNode status="" description="" testresult="5" timestamp="2019-03-01 16:22:27.871" name="initialize.js"/>
+    <ResultNode status="" description="Some dummy result" testresult="1" timestamp="2019-03-01 16:22:27.929" name="test1.js"/>
+    <ResultNode status="" description="Some dummy result" testresult="5" timestamp="2019-03-01 16:22:27.929" name="test2.js"/>
+    <ResultNode status="" description="" testresult="5" timestamp="2019-03-01 16:22:47.006" name="cleanup.js"/>
+   </ResultNode>
+  </ResultNode>
+  <ResultNode status="" description="" testresult="4" timestamp="2019-03-01 16:32:54.932" name="afterTest.js">
+   <ResultNode status="" description="After test result" testresult="4" timestamp="2019-03-01 16:32:54.963" name="Not Supported"/>
+  </ResultNode>
+ </ResultNode>
+</UaCttResults>
