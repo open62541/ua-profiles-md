@@ -1,0 +1,66 @@
+<UaProfiles xsi:noNamespaceSchemaLocation="uaprofiles.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <ProjectInfo ProjectType="ClientProject" ProjectProfile="Standard" ScriptVersionScriptVersion="123" Version="0.1.234.567"/>
+ <Categories>
+  <Category description="Server Category" name="Server"/>
+  <Category description="Security Category" name="Security"/>
+  <Category description="Transport Category" name="Transport"/>
+ </Categories>
+ <ConformanceGroups>
+  <ConformanceGroup description="Group 1 Description" name="Group 1">
+   <ConformanceUnits>
+    <ConformanceUnit category="Server" description="Unit 1 Description" name="Unit 1" used="true">
+     <TestCases>
+      <TestCase descriptionScriptVersion="123" name="test1.js" filename="path/test1.js" checkedStateScriptVersion="123"/>
+      <TestCase descriptionScriptVersion="123" name="test2.js" filename="path/test1.js" checkedStateScriptVersion="123"/>
+     </TestCases>
+    </ConformanceUnit>
+   </ConformanceUnits>
+  </ConformanceGroup>
+  <ConformanceGroup description="Group 2 Description" name="Group 2">
+   <ConformanceUnits>
+    <ConformanceUnit category="Security" description="Unit 2 Description" name="Unit 2" used="true">
+     <TestCases>
+      <TestCase descriptionScriptVersion="123" name="test1.js" filename="path/test1.js" checkedStateScriptVersion="123"/>
+      <TestCase descriptionScriptVersion="123" name="test2.js" filename="path/test1.js" checkedStateScriptVersion="123"/>
+     </TestCases>
+    </ConformanceUnit>
+    <ConformanceUnit category="Transport" description="Unit 3 Description" name="Unit 3" used="true">
+     <TestCases>
+      <TestCase descriptionScriptVersion="123" name="test1.js" filename="path/test1.js" checkedStateScriptVersion="123"/>
+      <TestCase descriptionScriptVersion="123" name="test2.js" filename="path/test1.js" checkedStateScriptVersion="123"/>
+     </TestCases>
+    </ConformanceUnit>
+   </ConformanceUnits>
+  </ConformanceGroup>
+ </ConformanceGroups>
+ <Profiles>
+  <Profile category="Server" description="All Units" uri="Some_profile_uri" name="All Units Facet">
+   <IncludeConformanceUnits>
+    <IncludeConformanceUnit optional="false" group="Group 1" name="Unit 1"/>
+    <IncludeConformanceUnit optional="false" group="Group 2" name="Unit 2"/>
+    <IncludeConformanceUnit optional="false" group="Group 2" name="Unit 3"/>
+   </IncludeConformanceUnits>
+   <IncludeProfiles/>
+  </Profile>
+  <Profile category="Server" description="Only Unit 1" uri="Some_profile_uri" name="Unit 1 Facet">
+   <IncludeConformanceUnits>
+    <IncludeConformanceUnit optional="false" group="Group 1" name="Unit 1"/>
+   </IncludeConformanceUnits>
+   <IncludeProfiles/>
+  </Profile>
+  <Profile category="Server" description="Only Unit 2" uri="Some_profile_uri" name="Unit 2 Facet">
+   <IncludeConformanceUnits>
+    <IncludeConformanceUnit optional="false" group="Group 2" name="Unit 2"/>
+   </IncludeConformanceUnits>
+   <IncludeProfiles/>
+  </Profile>
+  <Profile category="Server" description="Unit 1 and Unit 2" uri="Some_profile_uri" name="Unit 1 and 2 Profile">
+   <IncludeConformanceUnits>
+   </IncludeConformanceUnits>
+   <IncludeProfiles>
+    <IncludeProfile name="Unit 1 Facet"/>
+    <IncludeProfile name="Unit 2 Facet"/>
+   </IncludeProfiles>
+  </Profile>
+ </Profiles>
+</UaProfiles>
