@@ -72,18 +72,19 @@ def writeSelectedUnits(writemd, selection):
 
     writemd("Tested with version: `{}`\n".format(selection.projectInfo.version))
 
-    writemd("| Conformance Group   | Conformance Unit    | Result |")
-    writemd("|---------------------|---------------------|--------|")
+    writemd("| Result | Conformance Group   | Conformance Unit    |")
+    writemd("|--------|---------------------|---------------------|")
 
     for selGroup in selection.conformanceGroups:
-        headerPrinted = False
+        writemd("| {result} | {group} |  |".format(
+            group=selGroup.group.name,
+            result=testResultIconMap[selGroup.result.testresult]
+        ))
         for selUnit in selGroup.selectedUnits:
-            writemd("| {group} | {unit} | {result} |".format(
-                group=selGroup.group.name if not headerPrinted else "",
+            writemd("| {result} |  | {unit} |".format(
                 unit=selUnit.unit.name,
                 result=testResultIconMap[selUnit.result.testresult]
             ))
-            headerPrinted = True
 
 def writeAllProfiles(writemd, profiles):
 

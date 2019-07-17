@@ -17,43 +17,54 @@ The following tables use these signs to indicate the test results:
 
 Tested with version: `1.3.340.380`
 
-| Conformance Group   | Conformance Unit    | Result |
-|---------------------|---------------------|--------|
-| Address Space Model | Address Space Base | :heavy_check_mark: |
-|  | Address Space Method | :heavy_check_mark: |
-| Attribute Services | Attribute Read | :heavy_check_mark: |
-|  | Attribute Write Index | :heavy_check_mark: |
-|  | Attribute Write Values | :warning: |
-| Base Information | Base Info OptionSet | :heavy_minus_sign: |
-|  | Base Info Placeholder Modelling Rules | :heavy_minus_sign: |
-|  | Base Info ValueAsText | :warning: |
-|  | Base Info Server Capabilities | :warning: |
-| Discovery Services | Discovery Get Endpoints | :white_circle: |
-|  | Discovery Find Servers Self | :white_circle: |
-| Method Services | Method Call | :heavy_check_mark: |
-| Monitored Item Services | Monitor Basic | :warning: |
-|  | Monitor Items 2 | :heavy_check_mark: |
-|  | Monitor QueueSize_1 | :heavy_check_mark: |
-|  | Monitor Value Change | :heavy_check_mark: |
-| Protocol and Encoding | Protocol TCP Binary UA Security | :white_circle: |
-| Security | Security None | :heavy_check_mark: |
-|  | Security User Name Password | :warning: |
-|  | Security None CreateSession ActivateSession | :heavy_check_mark: |
-|  | Security None CreateSession ActivateSession 1.01 | :white_circle: |
-|  | Security Administration | :heavy_minus_sign: |
-|  | Security - No Application Authentication | :white_circle: |
-| Session Services | Session Minimum 1 | :heavy_check_mark: |
-|  | Session Minimum 2 Parallel | :heavy_check_mark: |
-|  | Session General Service Behaviour | :heavy_check_mark: |
-|  | Session Base | :warning: |
-| Subscription Services | Subscription Basic | :white_circle: |
-|  | Subscription Publish Discard Policy | :heavy_minus_sign: |
-|  | Subscription Minimum 1 | :radio_button: |
-|  | Subscription Publish Min 02 | :warning: |
-| View Services | View Basic | :warning: |
-|  | View Minimum Continuation Point 01 | :warning: |
-|  | View RegisterNodes | :white_circle: |
-|  | View TranslateBrowsePath | :heavy_check_mark: |
+| Result | Conformance Group   | Conformance Unit    |
+|--------|---------------------|---------------------|
+| :heavy_check_mark: | Address Space Model |  |
+| :heavy_check_mark: |  | Address Space Base |
+| :heavy_check_mark: |  | Address Space Method |
+| :warning: | Attribute Services |  |
+| :heavy_check_mark: |  | Attribute Read |
+| :heavy_check_mark: |  | Attribute Write Index |
+| :warning: |  | Attribute Write Values |
+| :warning: | Base Information |  |
+| :heavy_minus_sign: |  | Base Info OptionSet |
+| :heavy_minus_sign: |  | Base Info Placeholder Modelling Rules |
+| :warning: |  | Base Info ValueAsText |
+| :warning: |  | Base Info Server Capabilities |
+| :white_circle: | Discovery Services |  |
+| :white_circle: |  | Discovery Get Endpoints |
+| :white_circle: |  | Discovery Find Servers Self |
+| :heavy_check_mark: | Method Services |  |
+| :heavy_check_mark: |  | Method Call |
+| :warning: | Monitored Item Services |  |
+| :warning: |  | Monitor Basic |
+| :heavy_check_mark: |  | Monitor Items 2 |
+| :heavy_check_mark: |  | Monitor QueueSize_1 |
+| :heavy_check_mark: |  | Monitor Value Change |
+| :white_circle: | Protocol and Encoding |  |
+| :white_circle: |  | Protocol TCP Binary UA Security |
+| :warning: | Security |  |
+| :heavy_check_mark: |  | Security None |
+| :warning: |  | Security User Name Password |
+| :heavy_check_mark: |  | Security None CreateSession ActivateSession |
+| :white_circle: |  | Security None CreateSession ActivateSession 1.01 |
+| :heavy_minus_sign: |  | Security Administration |
+| :white_circle: |  | Security - No Application Authentication |
+| :warning: | Session Services |  |
+| :heavy_check_mark: |  | Session Minimum 1 |
+| :heavy_check_mark: |  | Session Minimum 2 Parallel |
+| :heavy_check_mark: |  | Session General Service Behaviour |
+| :warning: |  | Session Base |
+| :warning: | Subscription Services |  |
+| :white_circle: |  | Subscription Basic |
+| :heavy_minus_sign: |  | Subscription Publish Discard Policy |
+| :radio_button: |  | Subscription Minimum 1 |
+| :warning: |  | Subscription Publish Min 02 |
+| :warning: | View Services |  |
+| :warning: |  | View Basic |
+| :warning: |  | View Minimum Continuation Point 01 |
+| :white_circle: |  | View RegisterNodes |
+| :heavy_check_mark: |  | View TranslateBrowsePath |
 
 
 
