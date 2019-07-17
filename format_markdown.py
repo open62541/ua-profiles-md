@@ -81,7 +81,7 @@ def writeSelectedUnits(writemd, selection):
             result=testResultIconMap[selGroup.result.testresult]
         ))
         for selUnit in selGroup.selectedUnits:
-            writemd("| {result} |  | {unit} |".format(
+            writemd("|  | {result} | {unit} |".format(
                 unit=selUnit.unit.name,
                 result=testResultIconMap[selUnit.result.testresult]
             ))
@@ -108,7 +108,7 @@ def writeAllProfiles(writemd, profiles):
         ))
 
         for unit in group.conformanceUnits:
-            writemd("| {result} |  | {unit} |".format(
+            writemd("| | {result} | {unit} |".format(
                 unit=unit.name,
                 result=testResultIconMap[unit.getResult()]
             ))
@@ -130,7 +130,7 @@ def writeAllProfiles(writemd, profiles):
 
         for incUnits in profile.conformanceUnits:
 
-            writemd("| {result} |  | Unit | {optional}{unit}{optional} |".format(
+            writemd("|  | {result} | Unit | {optional}{unit}{optional} |".format(
                 unit=incUnits.unit.name,
                 result=testResultIconMap[incUnits.unit.getResult()],
                 optional='*' if incUnits.optional else ''
@@ -138,7 +138,7 @@ def writeAllProfiles(writemd, profiles):
 
         for incProfile in profile.profiles:
 
-            writemd("| {result} |  | {type} | {unit} |".format(
+            writemd("|  | {result} | {type} | {unit} |".format(
                 unit=incProfile.name,
                 result=testResultIconMap[incProfile.getResult()],
                 type="Profile" if not incProfile.isFacet else "Facet"
