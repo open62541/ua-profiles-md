@@ -78,6 +78,13 @@ parser.add_argument('--format',
                     choices=['markdown'],
                     help='Format for the output file (default: %(default)s)')
 
+parser.add_argument('--type',
+                    default='server',
+                    const='server',
+                    nargs='?',
+                    choices=['server', 'client'],
+                    help='Profile file which should be generated (default: %(default)s)')
+
 parser.add_argument('outputFile',
                     metavar='<outputFile>',
                     default='PROFILES.md',
@@ -120,6 +127,16 @@ selectedProfilesType = selection.parseFile(args.selection, serverProfiles=server
 results = CttResults()
 results.parseFileResultsIntoSelection(args.results, selection)
 
+if args.type == "server" and selectedProfilesType != serverProfiles:
+    logger.error("Selected type is 'server' but the test results are for 'client'. I will generate the output file, but the test results column will be empty.")
+    selection = CttSelection()
+    results = CttResults()
+    selectedProfilesType = serverProfiles
+elif args.type == "client" and selectedProfilesType != clientProfiles:
+    logger.error("Selected type is 'client' but the test results are for 'server'. I will generate the output file, but the test results column will be empty.")
+    selection = CttSelection()
+    results = CttResults()
+    selectedProfilesType = clientProfiles
 
 logger.info("Generating output with format: {}".format(args.format))
 
