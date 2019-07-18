@@ -25,16 +25,17 @@ testResultIconMap = {
     TestResult.SKIPPED: ':white_circle:',
     TestResult.NOT_SUPPORTED: ':radio_button:',
     TestResult.OK: ':heavy_check_mark:',
-    TestResult.BACK_TRACE: ':collision:'
+    TestResult.BACK_TRACE: ':collision:',
+    TestResult.UNKNOWN: ':grey_question:',
 }
 
 statusIconMap = {
     ImplementationStatus.UNKNOWN: ':grey_question:',
     ImplementationStatus.NOT_IMPLEMENTED: ':new_moon:',
     ImplementationStatus.BEING_IMPLEMENTED: ':waning_crescent_moon:',
-    ImplementationStatus.FIRST_DRAFT: ':last_quarter_moon:',
-    ImplementationStatus.TESTING: ':full_moon:',
-    ImplementationStatus.RELEASED: ':heavy_check_mark:',
+    ImplementationStatus.INCUBATING: ':last_quarter_moon:',
+    ImplementationStatus.STABLE: ':full_moon:',
+    ImplementationStatus.CERTIFIED: ':heavy_check_mark:',
 }
 
 def write_format_markdown(profiles, selection, results, outputFilePath, templateHeaderFile, templateFooterFile):
@@ -56,9 +57,9 @@ def write_format_markdown(profiles, selection, results, outputFilePath, template
     writemd(" * Unknown = {}".format(statusIconMap[ImplementationStatus.UNKNOWN]))
     writemd(" * Not Implemented = {}".format(statusIconMap[ImplementationStatus.NOT_IMPLEMENTED]))
     writemd(" * Being Implemented = {}".format(statusIconMap[ImplementationStatus.BEING_IMPLEMENTED]))
-    writemd(" * First Draft = {}".format(statusIconMap[ImplementationStatus.FIRST_DRAFT]))
-    writemd(" * Testing = {}".format(statusIconMap[ImplementationStatus.TESTING]))
-    writemd(" * Released = {}".format(statusIconMap[ImplementationStatus.RELEASED]))
+    writemd(" * Incubating = {}".format(statusIconMap[ImplementationStatus.INCUBATING]))
+    writemd(" * Stable = {}".format(statusIconMap[ImplementationStatus.STABLE]))
+    writemd(" * Certified = {}".format(statusIconMap[ImplementationStatus.CERTIFIED]))
 
 
     writemd("\nThe following tables use these signs to indicate the test results:")
@@ -70,10 +71,20 @@ def write_format_markdown(profiles, selection, results, outputFilePath, template
     writemd(" * Not Supported = {}".format(testResultIconMap[TestResult.NOT_SUPPORTED]))
     writemd(" * OK = {}".format(testResultIconMap[TestResult.OK]))
     writemd(" * Back Trace = {}".format(testResultIconMap[TestResult.BACK_TRACE]))
+    writemd(" * No test results = {}".format(testResultIconMap[TestResult.UNKNOWN]))
 
     writemd("")
 
-    writeSelectedUnits(writemd, selection)
+    writemd("Project Info:")
+    writemd(" * Type = {}".format(profiles.projectInfo.type))
+    writemd(" * Profile = {}".format(profiles.projectInfo.profile))
+    writemd(" * Version = {}".format(profiles.projectInfo.version))
+
+    #writeSelectedUnits(writemd, selection)
+
+    #writemd("\n")
+
+    writeAllCategories(writemd, profiles)
 
     writemd("\n")
 
@@ -111,16 +122,36 @@ def writeSelectedUnits(writemd, selection):
                 status=statusIconMap[selUnit.unit.implementationStatus]
             ))
 
+def writeAllCategories(writemd, profiles):
+
+    writemd("\n## Grouped by Category\n")
+
+    writemd("| Status | Result   | Category             | Conformance Unit |")
+    writemd("|--------|----------|----------------------|------------------|")
+
+    for category in profiles.categories:
+        writemd("| {status} | {result} | {category} |  |".format(
+            category=category.name,
+            result=testResultIconMap[category.getResult()],
+            status=statusIconMap[category.getImplementationStatus()]
+        ))
+
+        for group in profiles.conformanceGroups:
+            for unit in group.conformanceUnits:
+                if not unit.category == category:
+                    continue
+                writemd("| | | {status} | {result} {unit} |".format(
+                    unit=unit.name,
+                    result=testResultIconMap[unit.getResult()],
+                    status=statusIconMap[unit.implementationStatus]
+                ))
+
+
 def writeAllProfiles(writemd, profiles):
 
-    writemd("\n## Results for all Profiles and Facets\n")
 
-    writemd("Project Info:")
-    writemd(" * Type = {}".format(profiles.projectInfo.type))
-    writemd(" * Profile = {}".format(profiles.projectInfo.profile))
-    writemd(" * Version = {}".format(profiles.projectInfo.version))
 
-    writemd("\n### Conformance Groups\n")
+    writemd("\n## Grouped by Conformance Groups\n")
 
     writemd("| Status | Result   | Conformance Group    | Conformance Unit |")
     writemd("|--------|----------|----------------------|------------------|")
@@ -140,7 +171,7 @@ def writeAllProfiles(writemd, profiles):
                 status=statusIconMap[unit.implementationStatus]
             ))
 
-    writemd("\n### Profiles and Facets\n")
+    writemd("\n## Grouped by Profiles and Facets\n")
 
     writemd(" Units writen in *italics* are optional within that profile\n\n")
 

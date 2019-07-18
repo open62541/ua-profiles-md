@@ -1,6 +1,13 @@
-# CTT Results
+# Supported Features
 
-This file contains the official CTT (Compliance Test Tools) results for the `example` OPC UA Stack.
+This file lists the implementation status of conformance units of the stack.
+These conformance units can be grouped in:
+
+- Categories
+- Conformance Groups
+- Profiles and Facets 
+
+In addition the current CTT (Compliance Test Tools) results are given.
 
 ## Explanation
 
@@ -9,9 +16,9 @@ The following tables use these signs to indicate the implementation status:
  * Unknown = :grey_question:
  * Not Implemented = :new_moon:
  * Being Implemented = :waning_crescent_moon:
- * First Draft = :last_quarter_moon:
- * Testing = :full_moon:
- * Released = :heavy_check_mark:
+ * Incubating = :last_quarter_moon:
+ * Stable = :full_moon:
+ * Certified = :heavy_check_mark:
 
 The following tables use these signs to indicate the test results:
  * Error = :x:
@@ -21,71 +28,157 @@ The following tables use these signs to indicate the test results:
  * Not Supported = :radio_button:
  * OK = :heavy_check_mark:
  * Back Trace = :collision:
-
-
-## Summarized Results for tested Conformance Units
-
-Tested with version: `1.3.340.380`
-
-| Status | Result | Conformance Group   | Conformance Unit    |
-|--------|--------|---------------------|---------------------|
-| :grey_question: | :heavy_check_mark: | Address Space Model |  |
-| | | :grey_question: | :heavy_check_mark: Address Space Base |
-| | | :grey_question: | :heavy_check_mark: Address Space Method |
-| :grey_question: | :warning: | Attribute Services |  |
-| | | :grey_question: | :heavy_check_mark: Attribute Read |
-| | | :grey_question: | :heavy_check_mark: Attribute Write Index |
-| | | :grey_question: | :warning: Attribute Write Values |
-| :grey_question: | :warning: | Base Information |  |
-| | | :grey_question: | :heavy_minus_sign: Base Info OptionSet |
-| | | :grey_question: | :heavy_minus_sign: Base Info Placeholder Modelling Rules |
-| | | :grey_question: | :warning: Base Info ValueAsText |
-| | | :grey_question: | :warning: Base Info Server Capabilities |
-| :grey_question: | :white_circle: | Discovery Services |  |
-| | | :grey_question: | :white_circle: Discovery Get Endpoints |
-| | | :grey_question: | :white_circle: Discovery Find Servers Self |
-| :grey_question: | :heavy_check_mark: | Method Services |  |
-| | | :grey_question: | :heavy_check_mark: Method Call |
-| :grey_question: | :warning: | Monitored Item Services |  |
-| | | :grey_question: | :warning: Monitor Basic |
-| | | :grey_question: | :heavy_check_mark: Monitor Items 2 |
-| | | :grey_question: | :heavy_check_mark: Monitor QueueSize_1 |
-| | | :grey_question: | :heavy_check_mark: Monitor Value Change |
-| :grey_question: | :white_circle: | Protocol and Encoding |  |
-| | | :grey_question: | :white_circle: Protocol TCP Binary UA Security |
-| :grey_question: | :warning: | Security |  |
-| | | :grey_question: | :heavy_check_mark: Security None |
-| | | :grey_question: | :warning: Security User Name Password |
-| | | :grey_question: | :heavy_check_mark: Security None CreateSession ActivateSession |
-| | | :grey_question: | :white_circle: Security None CreateSession ActivateSession 1.01 |
-| | | :grey_question: | :heavy_minus_sign: Security Administration |
-| | | :grey_question: | :white_circle: Security - No Application Authentication |
-| :grey_question: | :warning: | Session Services |  |
-| | | :grey_question: | :heavy_check_mark: Session Minimum 1 |
-| | | :grey_question: | :heavy_check_mark: Session Minimum 2 Parallel |
-| | | :grey_question: | :heavy_check_mark: Session General Service Behaviour |
-| | | :grey_question: | :warning: Session Base |
-| :grey_question: | :warning: | Subscription Services |  |
-| | | :grey_question: | :white_circle: Subscription Basic |
-| | | :grey_question: | :heavy_minus_sign: Subscription Publish Discard Policy |
-| | | :grey_question: | :radio_button: Subscription Minimum 1 |
-| | | :grey_question: | :warning: Subscription Publish Min 02 |
-| :grey_question: | :warning: | View Services |  |
-| | | :grey_question: | :warning: View Basic |
-| | | :grey_question: | :warning: View Minimum Continuation Point 01 |
-| | | :grey_question: | :white_circle: View RegisterNodes |
-| | | :grey_question: | :heavy_check_mark: View TranslateBrowsePath |
-
-
-
-## Results for all Profiles and Facets
+ * No test results = :grey_question:
 
 Project Info:
  * Type = ServerProject
  * Profile = Standard
  * Version = 1.3.340.375
 
-### Conformance Groups
+## Grouped by Category
+
+| Status | Result   | Category             | Conformance Unit |
+|--------|----------|----------------------|------------------|
+| :grey_question: | :white_circle: | Security |  |
+| | | :grey_question: | :heavy_check_mark: Security None |
+| | | :grey_question: | :white_circle: Security User Name Password |
+| | | :grey_question: | :white_circle: Security Administration - XML Schema |
+| | | :grey_question: | :white_circle: Security User X509 |
+| | | :grey_question: | :white_circle: Security Certificate Validation |
+| | | :grey_question: | :white_circle: Security Certificate Administration |
+| | | :grey_question: | :heavy_check_mark: Security None CreateSession ActivateSession |
+| | | :grey_question: | :white_circle: Security None CreateSession ActivateSession 1.01 |
+| | | :grey_question: | :white_circle: Security Basic 128Rsa15 |
+| | | :grey_question: | :white_circle: Security Basic 256Sha256 |
+| | | :grey_question: | :heavy_check_mark: Security Administration |
+| | | :grey_question: | :white_circle: Security - No Application Authentication |
+| | | :grey_question: | :white_circle: Security Basic 256 |
+| | | :grey_question: | :white_circle: Security User Anonymous |
+| | | :grey_question: | :white_circle: Security User IssuedToken Kerberos |
+| | | :grey_question: | :white_circle: Security User IssuedToken Kerberos Windows |
+| | | :grey_question: | :white_circle: Security Encryption Required |
+| | | :grey_question: | :white_circle: Security Signing Required |
+| | | :grey_question: | :white_circle: Security Time Synch - Configuration |
+| | | :grey_question: | :white_circle: Security Time Synch - NTP/OS Based Support |
+| | | :grey_question: | :white_circle: Security Time Synch - UA Based Support |
+| | | :grey_question: | :white_circle: Security Default ApplicationInstanceCertificate |
+| | | :grey_question: | :white_circle: Security No Application Authentication |
+| :grey_question: | :warning: | Server |  |
+| | | :grey_question: | :heavy_check_mark: Address Space Base |
+| | | :grey_question: | :white_circle: Address Space Events |
+| | | :grey_question: | :white_circle: Address Space Complex Datatypes |
+| | | :grey_question: | :heavy_check_mark: Address Space Method |
+| | | :grey_question: | :white_circle: Address Space UserWriteMask Multilevel |
+| | | :grey_question: | :white_circle: Address Space User Level Security Base |
+| | | :grey_question: | :white_circle: Address Space UserWriteAccess |
+| | | :grey_question: | :white_circle: Address Space WriteMask |
+| | | :grey_question: | :heavy_check_mark: Attribute Read |
+| | | :grey_question: | :heavy_check_mark: Attribute Write Index |
+| | | :grey_question: | :white_circle: Attribute Write StatusCode & TimeStamp |
+| | | :grey_question: | :white_circle: Attribute Alternate Encoding |
+| | | :grey_question: | :white_circle: Attribute Read Complex |
+| | | :grey_question: | :warning: Attribute Write Values |
+| | | :grey_question: | :white_circle: Attribute Write Complex |
+| | | :grey_question: | :white_circle: Auditing Base |
+| | | :grey_question: | :white_circle: AuditActivateSessionEventType |
+| | | :grey_question: | :white_circle: AuditCertificateEventType |
+| | | :grey_question: | :white_circle: AuditCreateSessionEventType |
+| | | :grey_question: | :white_circle: AuditOpenSecureChannelEventType |
+| | | :grey_question: | :white_circle: AuditUpdateEventType |
+| | | :grey_question: | :white_circle: Base Info Core Structure |
+| | | :grey_question: | :white_circle: Base Info Custom Type System |
+| | | :grey_question: | :white_circle: Base Info Diagnostics |
+| | | :grey_question: | :white_circle: Base Info Engineering Units |
+| | | :grey_question: | :white_circle: Base Info EventQueueOverflowEventType |
+| | | :grey_question: | :white_circle: Base Info GetMonitoredItems Method |
+| | | :grey_question: | :white_circle: Base Info Model Change |
+| | | :grey_question: | :heavy_check_mark: Base Info OptionSet |
+| | | :grey_question: | :heavy_check_mark: Base Info Placeholder Modelling Rules |
+| | | :grey_question: | :white_circle: Base Info Progress Events |
+| | | :grey_question: | :white_circle: Base Info ValueAsText |
+| | | :grey_question: | :white_circle: Base Info Property Change |
+| | | :grey_question: | :warning: Base Info Server Capabilities |
+| | | :grey_question: | :white_circle: Base Info System Status |
+| | | :grey_question: | :white_circle: Base Info System Status underlying system |
+| | | :grey_question: | :white_circle: Base Info Type System |
+| | | :grey_question: | :white_circle: Data Access AnalogItemType |
+| | | :grey_question: | :white_circle: Data Access DataItems |
+| | | :grey_question: | :white_circle: Data Access MultiState |
+| | | :grey_question: | :white_circle: Data Access PercentDeadBand |
+| | | :grey_question: | :white_circle: Data Access Semantic Changes |
+| | | :grey_question: | :white_circle: Data Access TwoState |
+| | | :grey_question: | :white_circle: Data Access ArrayItemType |
+| | | :grey_question: | :white_circle: Data Access ComplexNumber |
+| | | :grey_question: | :white_circle: Data Access DoubleComplex Number |
+| | | :grey_question: | :white_circle: Discovery Get Endpoints |
+| | | :grey_question: | :white_circle: Discovery Configuration |
+| | | :grey_question: | :white_circle: Discovery Register |
+| | | :grey_question: | :white_circle: Discovery Register2 |
+| | | :grey_question: | :white_circle: Discovery Accept Registrations |
+| | | :grey_question: | :white_circle: Discovery Accept Registrations Security |
+| | | :grey_question: | :white_circle: Discovery Find Servers Self |
+| | | :grey_question: | :white_circle: Discovery Find Servers Filter |
+| | | :grey_question: | :white_circle: Discovery Configuration |
+| | | :grey_question: | :heavy_check_mark: Method Call |
+| | | :grey_question: | :white_circle: Monitor Alternate Encoding |
+| | | :grey_question: | :warning: Monitor Basic |
+| | | :grey_question: | :heavy_check_mark: Monitor Items 2 |
+| | | :grey_question: | :white_circle: Monitor Items 10 |
+| | | :grey_question: | :white_circle: Monitor Items 100 |
+| | | :grey_question: | :white_circle: Monitor Items 500 |
+| | | :grey_question: | :white_circle: Monitor Items 5000 |
+| | | :grey_question: | :heavy_check_mark: Monitor QueueSize_1 |
+| | | :grey_question: | :white_circle: Monitor MinQueueSize_02 |
+| | | :grey_question: | :white_circle: Monitor MinQueueSize_05 |
+| | | :grey_question: | :white_circle: Monitor MinQueueSize_10 |
+| | | :grey_question: | :white_circle: Monitor QueueSize_ServerMax |
+| | | :grey_question: | :heavy_check_mark: Monitor Value Change |
+| | | :grey_question: | :white_circle: Monitor Complex Event Filter |
+| | | :grey_question: | :white_circle: Monitor Items Deadband Filter |
+| | | :grey_question: | :white_circle: Monitor Triggering |
+| | | :grey_question: | :white_circle: Monitor Events |
+| | | :grey_question: | :white_circle: Node Management Delete Ref |
+| | | :grey_question: | :white_circle: Node Management Add Ref |
+| | | :grey_question: | :white_circle: Node Management Delete Node |
+| | | :grey_question: | :white_circle: Node Management Add Node |
+| | | :grey_question: | :white_circle: Protocol Configuration |
+| | | :grey_question: | :white_circle: Redundancy Server Transparent |
+| | | :grey_question: | :white_circle: Redundancy Server |
+| | | :grey_question: | :heavy_check_mark: Session Minimum 1 |
+| | | :grey_question: | :heavy_check_mark: Session Minimum 2 Parallel |
+| | | :grey_question: | :white_circle: Session Minimum 10 Parallel |
+| | | :grey_question: | :white_circle: Session Minimum 50 Parallel |
+| | | :grey_question: | :white_circle: Session Minimum 500 Parallel |
+| | | :grey_question: | :heavy_check_mark: Session General Service Behaviour |
+| | | :grey_question: | :warning: Session Base |
+| | | :grey_question: | :white_circle: Session Change User |
+| | | :grey_question: | :white_circle: Session Cancel |
+| | | :grey_question: | :white_circle: Subscription Basic |
+| | | :grey_question: | :white_circle: Subscription Publish Discard Policy |
+| | | :grey_question: | :radio_button: Subscription Minimum 1 |
+| | | :grey_question: | :white_circle: Subscription Minimum 02 |
+| | | :grey_question: | :white_circle: Subscription Minimum 05 |
+| | | :grey_question: | :white_circle: Subscription Minimum 10 |
+| | | :grey_question: | :warning: Subscription Publish Min 02 |
+| | | :grey_question: | :white_circle: Subscription Publish Min 05 |
+| | | :grey_question: | :white_circle: Subscription Publish Min 10 |
+| | | :grey_question: | :white_circle: Subscription Transfer |
+| | | :grey_question: | :white_circle: UserDefinedCU |
+| | | :grey_question: | :warning: View Basic |
+| | | :grey_question: | :warning: View Minimum Continuation Point 01 |
+| | | :grey_question: | :white_circle: View Minimum Continuation Point 05 |
+| | | :grey_question: | :white_circle: View Minimum Continuation Point 10 |
+| | | :grey_question: | :white_circle: View Minimum Continuation Point 50 |
+| | | :grey_question: | :white_circle: View RegisterNodes |
+| | | :grey_question: | :heavy_check_mark: View TranslateBrowsePath |
+| :grey_question: | :white_circle: | Transport |  |
+| | | :grey_question: | :white_circle: Protocol Soap Binary WS Security |
+| | | :grey_question: | :white_circle: Protocol TCP Binary UA Security |
+| | | :grey_question: | :white_circle: Protocol Soap Xml WS Security |
+
+
+
+## Grouped by Conformance Groups
 
 | Status | Result   | Conformance Group    | Conformance Unit |
 |--------|----------|----------------------|------------------|
@@ -241,7 +334,7 @@ Project Info:
 | | | :grey_question: | :white_circle: View RegisterNodes |
 | | | :grey_question: | :heavy_check_mark: View TranslateBrowsePath |
 
-### Profiles and Facets
+## Grouped by Profiles and Facets
 
  Units writen in *italics* are optional within that profile
 

@@ -49,7 +49,7 @@ class Profiles:
         for categoryXml in uaProfile.getElementsByTagName("Categories")[0].childNodes:
             if categoryXml.nodeType != categoryXml.ELEMENT_NODE:
                 continue
-            cat = ProfileCategory()
+            cat = ProfileCategory(self)
             cat.parseXml(categoryXml)
             self.categories.append(cat)
 
@@ -130,13 +130,48 @@ class ProjectInfo:
 class ProfileCategory:
     """Class describing the profile category"""
 
-    def __init__(self):
+    def __init__(self, profiles):
         self.description = None
         self.name = None
+        self.profiles = profiles
+        self.accumulatedTestResult = None
+        self.accumulatedImplementationStatus = None
 
     def parseXml(self, xmlelement):
         self.description = xmlelement.getAttribute("description")
         self.name = xmlelement.getAttribute("name")
+
+
+    def getResult(self):
+        if self.accumulatedTestResult:
+            return self.accumulatedTestResult
+
+        self.accumulatedTestResult = TestResult.UNKNOWN
+        for group in self.profiles.conformanceGroups:
+            for unit in group.conformanceUnits:
+                if not unit.category == self:
+                    continue
+                res = unit.getResult()
+                if res < self.accumulatedTestResult:
+                    self.accumulatedTestResult = res
+
+        return self.accumulatedTestResult
+
+    def getImplementationStatus(self):
+
+        if self.accumulatedImplementationStatus:
+            return self.accumulatedImplementationStatus
+
+        self.accumulatedImplementationStatus = ImplementationStatus.UNKNOWN
+
+        for group in self.profiles.conformanceGroups:
+            for unit in group.conformanceUnits:
+                if not unit.category == self:
+                    continue
+                if ImplementationStatus.UNKNOWN < unit.implementationStatus < self.accumulatedImplementationStatus:
+                    self.accumulatedImplementationStatus = unit.implementationStatus
+
+        return self.accumulatedImplementationStatus
 
 
 class ConformanceGroup:

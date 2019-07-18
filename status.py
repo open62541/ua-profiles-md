@@ -19,6 +19,6 @@ class ImplementationStatus(IntEnum):
     UNKNOWN = 0
     NOT_IMPLEMENTED = 1
     BEING_IMPLEMENTED = 2
-    FIRST_DRAFT = 3
-    TESTING = 4
-    RELEASED = 5
+    INCUBATING = 3
+    STABLE = 4
+    CERTIFIED = 5

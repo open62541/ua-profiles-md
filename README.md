@@ -2,7 +2,7 @@
 
 This repository contains a generator which is using the OPC UA profiles description and generates a markdown file with the list of supported profiles.
 
-An example output file is contained in this repository: [PROFILES.md](PROFILES.md)
+An example output file is contained in this repository: [PROFILES_SERVER.md](PROFILES_SERVER.md) and [PROFILES_CLIENT.md](PROFILES_CLIENT.md) 
 
 A full list of OPC UA Profiles can be found in Part 7 of the specification.
 The required input files for this generater are contained in the official Compliance Test Toolkit (CTT) installation.
