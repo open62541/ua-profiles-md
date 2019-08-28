@@ -88,6 +88,8 @@ class CttResults:
 
     def setResultsForSelectedTests(self, unit):
         for selTest in unit.selectedTests:
+            if not selTest:
+                continue
             testResults = None
             for res in unit.result.results:
                 if res.name == selTest.name:
